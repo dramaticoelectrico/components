@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Combobox</title>
+  </head>
+  <body>
+    <nav>
+      <a href="/">Home</a>
+    </nav>
+    <main>
+      <h1>The Combobox</h1>
+      <div
+        aria-label="Tag"
+        role="combobox"
+        aria-expanded="true"
+        aria-owns="owned_listbox"
+        aria-haspopup="listbox"
+      >
+        <input
+          type="text"
+          aria-autocomplete="list"
+          aria-controls="owned_listbox"
+          aria-activedescendant="selected_option"
+        />
+      </div>
+      <ul role="listbox" id="owned_listbox">
+        <li role="option">Zebra</li>
+        <li role="option" id="selected_option">Zoom</li>
+      </ul>
+    </main>
+  </body>
+</html>
