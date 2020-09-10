@@ -11,24 +11,29 @@
     </nav>
     <main>
       <h1>The Combobox</h1>
-      <div
+      <form
+        id="combobox-form"
         aria-label="Tag"
         role="combobox"
-        aria-expanded="true"
+        aria-expanded="false"
         aria-owns="owned_listbox"
         aria-haspopup="listbox"
       >
+        <label for="search">Search</label>
         <input
+          id="search"
           type="text"
           aria-autocomplete="list"
           aria-controls="owned_listbox"
           aria-activedescendant="selected_option"
+          autocomplete="off"
         />
-      </div>
+      </form>
       <ul role="listbox" id="owned_listbox">
-        <li role="option">Zebra</li>
-        <li role="option" id="selected_option">Zoom</li>
+        <!-- <li role="option">Zebra</li>
+        <li role="option" id="selected_option">Zoom</li> -->
       </ul>
     </main>
+    <script src="../public/js/combobox.js"></script>
   </body>
 </html>
