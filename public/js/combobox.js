@@ -40,41 +40,45 @@
       item.removeAttribute('style')
       item.removeAttribute('aria-selected')
     })
-    console.log(index)
     let select = listParent.querySelector('#option-' + index)
 
     if (!select) return
 
-    select.setAttribute('style', 'background:red;')
+    select.setAttribute('style', 'background:#d2d2d2;')
     select.setAttribute('aria-selected', 'true')
   }
 
-  function keyCodeEvents(type) {
+  function keyCodeEvents(event) {
     const els = listParent.querySelectorAll('li')
+    const chars = event.target.value.length
 
     if (!els.length) return
-    switch (type.code) {
+
+    switch (event.code) {
       case 'ArrowUp':
-        // traverseList(index)
+        setTimeout(() => (event.target.selectionStart = chars), 0)
         if (index < 0) return
         traverseList((index = index - 1))
         break
       case 'ArrowDown':
-        // traverseList(index)
         if (els.length - 1 <= index) index = -1
         traverseList((index = index + 1))
         break
       case 'ArrowRight':
-        console.log('key right')
+        event.target.selectionStart = chars
         break
       case 'ArrowLeft':
-        console.log('key left')
+        event.target.selectionStart = 0
         break
       case 'Escape':
-        console.log('Escape')
+        if (listParent.children) {
+          listParent.innerHTML = ''
+        }
         break
       case 'Enter':
-        console.log('Enter')
+        event.preventDefault()
+        input.value = els[index].textContent
+        listParent.innerHTML = ''
         break
       default:
         console.log('looks like an error or missed')
@@ -89,7 +93,11 @@
 
     buildList(filterd)
   }
+  function formSubmit(e) {
+    e.preventDefault()
+    console.log(input.value, ' === submit do submit')
+  }
   input.addEventListener('input', createDataList)
-  form.addEventListener('submit', (e) => e.preventDefault())
+  form.addEventListener('submit', formSubmit)
   input.addEventListener('keydown', keyCodeEvents)
 })()
