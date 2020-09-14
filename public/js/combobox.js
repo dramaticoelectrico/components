@@ -96,6 +96,7 @@
   function formSubmit(e) {
     e.preventDefault()
     console.log(input.value, ' === submit do submit')
+    input.value = ''
   }
   input.addEventListener('input', createDataList)
   form.addEventListener('submit', formSubmit)
