@@ -2,7 +2,7 @@
   const listParent = document.getElementById('owned_listbox')
   const form = document.getElementById('combobox-form')
   const input = document.getElementById('search')
-  let index = -1
+  let listIndex = -1
 
   const getData = async (val) => {
     const request = await fetch('http://127.0.0.1:5500/api/dogs.json?=' + val)
@@ -22,7 +22,7 @@
   function buildList(dataList) {
     let list
     listParent.innerHTML = ''
-    index = -1
+    listIndex = -1
     if (!dataList.length) return resetListBox()
     form.setAttribute('aria-expanded', true)
 
@@ -35,12 +35,21 @@
       listParent.append(list)
     }
   }
-  function traverseList(index) {
+  async function createDataList(e) {
+    const query = e.target.value
+    if (!query) return resetListBox()
+
+    const response = await getData(query)
+    const filterd = filterData(query, response)
+
+    buildList(filterd)
+  }
+  function traverseList(listIndex) {
     listParent.querySelectorAll('li').forEach((item) => {
       item.removeAttribute('style')
       item.removeAttribute('aria-selected')
     })
-    let select = listParent.querySelector('#option-' + index)
+    let select = listParent.querySelector('#option-' + listIndex)
 
     if (!select) return
 
@@ -57,12 +66,12 @@
     switch (event.code) {
       case 'ArrowUp':
         setTimeout(() => (event.target.selectionStart = chars), 0)
-        if (index < 0) return
-        traverseList((index = index - 1))
+        if (listIndex < 0) return
+        traverseList((listIndex = listIndex - 1))
         break
       case 'ArrowDown':
-        if (els.length - 1 <= index) index = -1
-        traverseList((index = index + 1))
+        if (els.length - 1 <= listIndex) listIndex = -1
+        traverseList((listIndex = listIndex + 1))
         break
       case 'ArrowRight':
         event.target.selectionStart = chars
@@ -71,33 +80,26 @@
         event.target.selectionStart = 0
         break
       case 'Escape':
-        if (listParent.children) {
-          listParent.innerHTML = ''
-        }
+        if (listParent.children) resetListBox()
         break
       case 'Enter':
         event.preventDefault()
-        input.value = els[index].textContent
+        input.value = els[listIndex].textContent
         listParent.innerHTML = ''
         break
       default:
         console.log('looks like an error or missed')
     }
   }
-  async function createDataList(e) {
-    const query = e.target.value
-    if (!query) return resetListBox()
 
-    const response = await getData(query)
-    const filterd = filterData(query, response)
-
-    buildList(filterd)
-  }
   function formSubmit(e) {
     e.preventDefault()
     console.log(input.value, ' === submit do submit')
     input.value = ''
   }
+  /**
+   * Events
+   */
   input.addEventListener('input', createDataList)
   form.addEventListener('submit', formSubmit)
   input.addEventListener('keydown', keyCodeEvents)
