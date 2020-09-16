@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Combobox</title>
+    <link rel="stylesheet" href="../public/css/combobox.css" />
   </head>
   <body>
     <nav>
@@ -28,6 +29,20 @@
           aria-activedescendant="selected_option"
           autocomplete="off"
         />
+        <button type="submit" aria-label="search">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 32 32"
+            fill="none"
+            stroke="#000"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+          >
+            <circle cx="14" cy="14" r="12" />
+            <path d="M23 23l7 7" />
+          </svg>
+        </button>
       </form>
       <ul role="listbox" id="owned_listbox"></ul>
     </main>

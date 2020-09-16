@@ -12,6 +12,7 @@
   const resetListBox = () => {
     listParent.innerHTML = ''
     form.setAttribute('aria-expanded', false)
+    input.focus()
   }
 
   function filterData(str, data) {
@@ -29,8 +30,8 @@
     for (var i = 0; i < dataList.length; i++) {
       list = document.createElement('li')
       list.setAttribute('role', 'option')
-      list.setAttribute('data-index', i)
-      list.setAttribute('id', 'option-' + i)
+      list.dataset.index = i
+      list.id = 'option-' + i
       list.textContent = dataList[i]
       listParent.append(list)
     }
@@ -55,6 +56,7 @@
 
     select.setAttribute('style', 'background:#d2d2d2;')
     select.setAttribute('aria-selected', 'true')
+    input.value = select.textContent
   }
 
   function keyCodeEvents(event) {
@@ -84,6 +86,7 @@
         break
       case 'Enter':
         event.preventDefault()
+        if (!els[listIndex]) return
         input.value = els[listIndex].textContent
         listParent.innerHTML = ''
         break
@@ -97,10 +100,17 @@
     console.log(input.value, ' === submit do submit')
     input.value = ''
   }
+  function handleListClick(e) {
+    if (e.target.nodeName === 'LI') {
+      input.value = e.target.textContent
+      resetListBox()
+    }
+  }
   /**
    * Events
    */
   input.addEventListener('input', createDataList)
   form.addEventListener('submit', formSubmit)
   input.addEventListener('keydown', keyCodeEvents)
+  listParent.addEventListener('click', handleListClick)
 })()
