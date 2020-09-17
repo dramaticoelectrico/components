@@ -54,7 +54,7 @@
 
     if (!select) return
 
-    select.setAttribute('style', 'background:#d2d2d2;')
+    select.setAttribute('style', 'background-color: rgb(175, 218, 233);')
     select.setAttribute('aria-selected', 'true')
     input.value = select.textContent
   }
@@ -98,6 +98,7 @@
   function formSubmit(e) {
     e.preventDefault()
     console.log(input.value, ' === submit do submit')
+    resetListBox()
     input.value = ''
   }
   function handleListClick(e) {

@@ -12,39 +12,41 @@
     </nav>
     <main>
       <h1>The Combobox</h1>
-      <form
-        id="combobox-form"
-        aria-label="Tag"
-        role="combobox"
-        aria-expanded="false"
-        aria-owns="owned_listbox"
-        aria-haspopup="listbox"
-      >
-        <label for="search">Search</label>
-        <input
-          id="search"
-          type="text"
-          aria-autocomplete="list"
-          aria-controls="owned_listbox"
-          aria-activedescendant="selected_option"
-          autocomplete="off"
-        />
-        <button type="submit" aria-label="search">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 32 32"
-            fill="none"
-            stroke="#000"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-          >
-            <circle cx="14" cy="14" r="12" />
-            <path d="M23 23l7 7" />
-          </svg>
-        </button>
-      </form>
-      <ul role="listbox" id="owned_listbox"></ul>
+      <div class="block">
+        <form
+          id="combobox-form"
+          aria-label="Tag"
+          role="combobox"
+          aria-expanded="false"
+          aria-owns="owned_listbox"
+          aria-haspopup="listbox"
+        >
+          <input
+            id="search"
+            placeholder="Search"
+            type="text"
+            aria-autocomplete="list"
+            aria-controls="owned_listbox"
+            aria-activedescendant="selected_option"
+            autocomplete="off"
+          />
+          <button type="submit" aria-label="search">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 32 32"
+              fill="none"
+              stroke="#fff"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+            >
+              <circle cx="14" cy="14" r="12" />
+              <path d="M23 23l7 7" />
+            </svg>
+          </button>
+        </form>
+        <ul role="listbox" id="owned_listbox"></ul>
+      </div>
     </main>
     <script src="../public/js/combobox.js"></script>
   </body>

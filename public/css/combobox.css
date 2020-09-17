@@ -1,39 +1,54 @@
+:root {
+  --red: hsl(4, 85%, 57%);
+  --white: hsl(46, 100%, 97%);
+  --blue: hsl(219, 100%, 45%);
+  --black: hsla(0, 0%, 0%, 0.74);
+}
 html,
 body {
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-family: 'Courier New', Courier, monospace;
 }
 * {
   box-sizing: border-box;
+}
+.block {
+  display: table;
+  margin: 0 auto;
 }
 form {
   height: 57px;
   display: flex;
   align-items: center;
 }
-label {
-  font-size: 2.9rem;
-}
 input {
   padding: 0.25em 0.5em;
-  min-width: 15rem;
+  margin-right: 0.15em;
+  min-width: 30rem;
   height: inherit;
   font-size: 2rem;
-  border-radius: 0px;
-  border-width: 1px;
-  background: #d2d2d230;
+  border: none;
+  border-radius: 0;
+  border-bottom: 3px solid;
+  background: hsla(0, 0%, 82%, 0.188);
+}
+input:focus {
+  outline: none;
+  background: hsl(300, 8%, 95%);
 }
 ul {
-  margin: 0;
+  margin-top: 0.25em;
   list-style: none;
-  padding: 0.5em;
+  padding: 0;
 }
 li {
-  padding: 0.3em;
+  padding: 0.6em 0.3em;
+  font-size: 1.2rem;
+  border-bottom: 1px solid hsl(0, 0%, 82%);
 }
 button[type='submit'] {
   height: inherit;
   border: none;
   min-width: 3rem;
   padding: 0 0.5em;
-  background-color: lightblue;
+  background-color: hsl(200, 4%, 14%);
 }
