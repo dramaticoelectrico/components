@@ -50,5 +50,44 @@
       </div>
     </main>
     <script src="../public/js/combobox.js"></script>
+    <script>
+      /**
+       * createDataList()
+       * Outside function to use with API
+       * @param {Object} e
+       */
+      ;(function () {
+        const comboBox = ComboBox({
+          form: 'combobox-form',
+          listBox: 'owned_listbox',
+          input: 'search',
+        })
+        const input = document.getElementById('search')
+
+        /**
+         * getData()
+         * @param {String} val
+         */
+        const getData = async (val) => {
+          try {
+            const request = await fetch(
+              'http://127.0.0.1:5500/api/dogs.json?=' + val
+            )
+            return await request.json()
+          } catch (error) {
+            console.error({ error, method: 'getData()' })
+          }
+        }
+
+        async function createDataList(e) {
+          const query = e.target.value
+          const response = await getData(query)
+
+          // call the api method here
+          comboBox.filterData(query, response.dogs)
+        }
+        input.addEventListener('input', createDataList)
+      })()
+    </script>
   </body>
 </html>

@@ -1,17 +1,26 @@
-;(function (config) {
+const ComboBox = function (config) {
   /**
    * config
-   * data: object
    * form: form id
    * list: list parent id
    * input: input id
    * styles: {highligt: color}
    */
 
-  const listParent = document.getElementById('owned_listbox')
-  const form = document.getElementById('combobox-form')
-  const input = document.getElementById('search')
+  const settings = {
+    form: 'combobox-form',
+    listBox: 'owned_listbox',
+    input: 'search',
+    styles: {
+      highligt: 'background-color: rgb(175, 218, 233);',
+    },
+  }
+  const Config = { ...settings, ...config }
+  const listParent = document.getElementById(Config.listBox)
+  const form = document.getElementById(Config.form)
+  const input = document.getElementById(Config.input)
   let listIndex = -1
+  let currentSelect = ''
 
   const resetListBox = () => {
     listParent.innerHTML = ''
@@ -51,20 +60,23 @@
 
     if (!select) return
 
-    select.setAttribute('style', 'background-color: rgb(175, 218, 233);')
+    select.setAttribute('style', Config.styles.highligt)
     select.setAttribute('aria-selected', 'true')
     input.value = select.textContent
+    currentSelect = select.textContent
   }
 
   function keyCodeEvents(event) {
     const els = listParent.querySelectorAll('li')
-    const chars = event.target.value.length
 
     if (!els.length) return
 
     switch (event.code) {
       case 'ArrowUp':
-        setTimeout(() => (event.target.selectionStart = chars), 0)
+        setTimeout(
+          () => (event.target.selectionStart = currentSelect.length),
+          0
+        )
         if (listIndex < 0) return
         traverseList((listIndex = listIndex - 1))
         break
@@ -73,7 +85,7 @@
         traverseList((listIndex = listIndex + 1))
         break
       case 'ArrowRight':
-        event.target.selectionStart = chars
+        event.target.selectionStart = currentSelect.length
         break
       case 'ArrowLeft':
         event.target.selectionStart = 0
@@ -104,33 +116,6 @@
       resetListBox()
     }
   }
-  /**
-   * getData()
-   * @param {String} val
-   */
-  const getData = async (val) => {
-    try {
-      const request = await fetch('http://127.0.0.1:5500/api/dogs.json?=' + val)
-      return await request.json()
-    } catch (error) {
-      console.error({ error, method: 'getData()' })
-    }
-  }
-  /**
-   * createDataList()
-   * Outside function to use with API
-   * @param {Object} e
-   */
-  async function createDataList(e) {
-    const query = e.target.value
-    const response = await getData(query)
-
-    // call the api method here
-    filterData(query, response.dogs)
-
-    // buildList(filterd)
-  }
-  input.addEventListener('input', createDataList)
 
   /**
    * API Events
@@ -139,4 +124,8 @@
   form.addEventListener('submit', formSubmit)
   input.addEventListener('keydown', keyCodeEvents)
   listParent.addEventListener('click', handleListClick)
-})()
+
+  return {
+    filterData: filterData,
+  }
+}
