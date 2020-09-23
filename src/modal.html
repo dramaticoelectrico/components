@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>The Modal Dialog</title>
+    <link rel="stylesheet" href="../public/css/modal.css" />
   </head>
   <body>
     <h1>The modal dialog</h1>
@@ -14,9 +15,10 @@
         id="dialog"
         aria-labelledby="dialog_label"
         aria-modal="true"
-        class="hidden"
+        aria-hidden="true"
+        class="dialog"
       >
-        <button class="dialog-close" aria-label="Close">
+        <button class="btn dialog-close x" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
         <header class="dialod-head">
@@ -24,10 +26,11 @@
         </header>
         <section class="dialog-body">body text area</section>
         <footer>
-          <button class="dialog-close">Close</button>
-          <button class="dialog-agree">Agree</button>
+          <button class="btn dialog-close">Close</button>
+          <button class="btn dialog-agree">Agree</button>
         </footer>
       </div>
     </main>
+    <script src="../public/js/modal.js"></script>
   </body>
 </html>
