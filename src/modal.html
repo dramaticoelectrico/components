@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Modal Dialog</title>
+  </head>
+  <body>
+    <h1>The modal dialog</h1>
+    <main>
+      <button id="dialog-open">Open Dialog</button>
+      <div
+        role="dialog"
+        id="dialog"
+        aria-labelledby="dialog_label"
+        aria-modal="true"
+        class="hidden"
+      >
+        <button class="dialog-close" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <header class="dialod-head">
+          <p id="dialog-label">The dialog modal</p>
+        </header>
+        <section class="dialog-body">body text area</section>
+        <footer>
+          <button class="dialog-close">Close</button>
+          <button class="dialog-agree">Agree</button>
+        </footer>
+      </div>
+    </main>
+  </body>
+</html>
