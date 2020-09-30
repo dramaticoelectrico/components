@@ -16,6 +16,7 @@
         aria-labelledby="dialog_label"
         aria-modal="true"
         aria-hidden="true"
+        data-hidden="true"
         class="dialog"
       >
         <button class="btn dialog-close x" aria-label="Close">
@@ -32,5 +33,9 @@
       </div>
     </main>
     <script src="../public/js/modal.js"></script>
+    <script>
+      const dialog = Modal({ id: 'dialog', trigger: 'dialog-open' })
+      dialog.init()
+    </script>
   </body>
 </html>
