@@ -39,12 +39,12 @@ button {
 }
 .btn {
   background: none;
-  border: 1px solid transparent;
+  border: 5px solid transparent;
   font-size: 1.5rem;
   padding: 0.5rem 0.8rem;
 }
 .btn:focus {
-  border: 1px solid hsl(187, 35%, 49%);
+  border: 5px solid hsl(187, 35%, 49%);
 }
 .dialog-close.x {
   font-size: 3rem;
