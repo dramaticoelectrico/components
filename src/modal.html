@@ -9,30 +9,40 @@
   <body>
     <h1>The modal dialog</h1>
     <main>
-      <button id="dialog-open">Open Dialog</button>
-      <div
-        role="dialog"
-        id="dialog"
-        aria-labelledby="dialog_label"
-        aria-modal="true"
-        aria-hidden="true"
-        data-hidden="true"
-        class="dialog"
-        tabindex="-1"
-      >
+      <button class="btn btn-dialog" aria-controls="dialog" id="dialog-open">
+        Open Dialog
+      </button>
+      <a href="">help me now</a>
+      <button>HELP ME NOW</button>
+      <label>my name is</label>
+      <input type="text" />
+    </main>
+    <div
+      role="dialog"
+      id="dialog"
+      aria-labelledby="dialog-title"
+      aria-modal="true"
+      aria-hidden="true"
+      data-hidden="true"
+      class="dialog"
+    >
+      <div class="dialog-content">
+        <header class="dialod-head">
+          <p tabindex="-1" id="dialog-title" class="dialog-label">
+            The dialog modal
+          </p>
+        </header>
+        <section class="dialog-body">body text area</section>
+        <div class="dialog--btn-group">
+          <button class="btn dialog-agree">agree</button>
+          <button class="btn dialog-close">close</button>
+        </div>
         <button class="btn dialog-close x" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-        <header class="dialod-head">
-          <p id="dialog-label" class="dialog-label">The dialog modal</p>
-        </header>
-        <section class="dialog-body">body text area</section>
-        <footer>
-          <button class="btn dialog-close">close</button>
-          <button class="btn dialog-agree">agree</button>
-        </footer>
       </div>
-    </main>
+      <div class="overlay" data-hidden="true" id="overlay"></div>
+    </div>
     <script src="../public/js/modal.js"></script>
     <script>
       const dialog = Modal({ id: 'dialog', trigger: 'dialog-open' })
