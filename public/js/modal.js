@@ -10,13 +10,13 @@ const Modal = function (config) {
   const agreeBtn = modal.querySelector('.dialog-agree')
   const overlay = document.getElementById('overlay')
   const focusable = [...modal.querySelectorAll(FOCUSABLE_ELS)]
-  const inertItems = createInertItems()
+  const inertItems = createInertItems(modal)
 
   let activeItem = null
 
-  function createInertItems() {
+  function createInertItems(focusedEl) {
     const bodyFocus = [...document.body.children].filter(
-      (item) => item !== modal
+      (item) => item !== focusedEl
     )
     return bodyFocus
       .map((item) => item.querySelectorAll(FOCUSABLE_ELS))
@@ -38,7 +38,10 @@ const Modal = function (config) {
 
     activeItem = e.target
 
-    inertItems.forEach((item) => item.setAttribute('aria-hidden', true))
+    inertItems.forEach(function (item) {
+      item.setAttribute('aria-hidden', true)
+      item.setAttribute('tabIndex', -1)
+    })
 
     modal.dataset.hidden = false
     modal.setAttribute('aria-hidden', false)
@@ -70,7 +73,10 @@ const Modal = function (config) {
 
     closeOverlay()
 
-    inertItems.forEach((item) => item.removeAttribute('aria-hidden'))
+    inertItems.forEach(function (item) {
+      item.removeAttribute('aria-hidden')
+      item.removeAttribute('tabIndex')
+    })
 
     activeItem.focus()
 
