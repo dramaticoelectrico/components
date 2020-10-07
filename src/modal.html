@@ -3,14 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>The Modal Dialog</title>
+    <title>The Modal modal</title>
     <link rel="stylesheet" href="../public/css/modal.css" />
   </head>
   <body>
-    <h1>The modal dialog</h1>
+    <h1>The modal modal</h1>
     <main>
-      <button class="btn btn-dialog" aria-controls="dialog" id="dialog-open">
-        Open Dialog
+      <button class="btn btn-modal" aria-controls="modal" id="modal-open">
+        Open modal
       </button>
       <a href="">help me now</a>
       <button>HELP ME NOW</button>
@@ -18,26 +18,26 @@
       <input type="text" />
     </main>
     <div
-      role="dialog"
-      id="dialog"
-      aria-labelledby="dialog-title"
+      role="modal"
+      id="modal"
+      aria-labelledby="modal-title"
       aria-modal="true"
       aria-hidden="true"
       data-hidden="true"
-      class="dialog"
+      class="modal"
     >
-      <div class="dialog-content">
+      <div class="modal-content">
         <header class="dialod-head">
-          <p tabindex="-1" id="dialog-title" class="dialog-label">
-            The dialog modal
+          <p tabindex="-1" id="modal-title" class="modal-label">
+            The modal modal
           </p>
         </header>
-        <section class="dialog-body">body text area</section>
-        <div class="dialog--btn-group">
-          <button class="btn dialog-agree">agree</button>
-          <button class="btn dialog-close">close</button>
+        <section class="modal-body">body text area</section>
+        <div class="modal--btn-group">
+          <button class="btn modal-agree">agree</button>
+          <button class="btn modal-close">close</button>
         </div>
-        <button class="btn dialog-close x" aria-label="Close">
+        <button class="btn modal-close x" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -45,8 +45,8 @@
     </div>
     <script src="../public/js/modal.js"></script>
     <script>
-      const dialog = Modal({ id: 'dialog', trigger: 'dialog-open' })
-      dialog.init()
+      const modal = Modal({ id: 'modal', trigger: 'modal-open' })
+      modal.init()
     </script>
   </body>
 </html>

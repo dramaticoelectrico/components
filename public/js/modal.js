@@ -5,9 +5,8 @@ const Modal = function (config) {
   const { id, trigger } = config
   const modal = document.getElementById(id)
   const modalBtn = document.getElementById(trigger)
-  const modalTitle = modal.querySelector('#dialog-title')
-  const closeBtn = modal.querySelectorAll('.dialog-close')
-  const agreeBtn = modal.querySelector('.dialog-agree')
+  const closeBtn = modal.querySelectorAll('.modal-close')
+  const agreeBtn = modal.querySelector('.modal-agree')
   const overlay = document.getElementById('overlay')
   const focusable = [...modal.querySelectorAll(FOCUSABLE_ELS)]
   const inertItems = createInertItems(modal)
@@ -33,7 +32,7 @@ const Modal = function (config) {
     overlay.removeEventListener('click', closeOverlay)
   }
 
-  function launchDialog(e) {
+  function launchModal(e) {
     e.preventDefault()
 
     activeItem = e.target
@@ -53,9 +52,9 @@ const Modal = function (config) {
 
     setTimeout(() => modal.classList.add('active'), 0)
     openOverlay()
-    closeBtn.forEach((btn) => btn.addEventListener('click', closeDialog))
-    agreeBtn.addEventListener('click', closeDialog)
-    overlay.addEventListener('click', closeDialog)
+    closeBtn.forEach((btn) => btn.addEventListener('click', closeModal))
+    agreeBtn.addEventListener('click', closeModal)
+    overlay.addEventListener('click', closeModal)
   }
   function removeModalTransitions() {
     if (Array.from(this.classList).indexOf('active') > -1) return
@@ -63,12 +62,11 @@ const Modal = function (config) {
     this.dataset.hidden = true
     this.removeEventListener('transitionend', removeModalTransitions)
   }
-  function closeDialog(e) {
+  function closeModal(e) {
     e.preventDefault()
 
     modal.classList.remove('active')
     modal.setAttribute('aria-hidden', true)
-
     modal.setAttribute('tabIndex', -1)
 
     closeOverlay()
@@ -80,15 +78,15 @@ const Modal = function (config) {
 
     activeItem.focus()
 
-    closeBtn.forEach((btn) => btn.removeEventListener('click', closeDialog))
-    agreeBtn.removeEventListener('click', closeDialog)
+    closeBtn.forEach((btn) => btn.removeEventListener('click', closeModal))
+    agreeBtn.removeEventListener('click', closeModal)
   }
 
   function keyEvents(event) {
     const type = event.shiftKey && event.keyCode === 9 ? 'shiftTab' : event.code
     switch (type) {
       case 'Escape':
-        closeDialog(event)
+        closeModal(event)
         break
       case 'Tab':
         if (document.activeElement === focusable[focusable.length - 1]) {
@@ -109,7 +107,7 @@ const Modal = function (config) {
   }
 
   function init() {
-    modalBtn.addEventListener('click', launchDialog)
+    modalBtn.addEventListener('click', launchModal)
     modal.addEventListener('keydown', keyEvents)
   }
 

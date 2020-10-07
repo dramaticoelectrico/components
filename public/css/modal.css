@@ -29,13 +29,14 @@ button {
 .overlay.active {
   opacity: 1;
 }
-.dialog {
+.modal {
   transition: opacity;
   transition-duration: 0.5s;
   display: none;
   opacity: 0;
+  outline: none;
 }
-.dialog-content {
+.modal-content {
   position: relative;
   width: 50%;
   margin: 0 auto;
@@ -44,41 +45,42 @@ button {
   box-shadow: 0px 1px 4px 2px hsla(0, 0%, 0%, 0.122);
   z-index: 5;
 }
-.dialog[data-hidden='false'] {
+.modal[data-hidden='false'] {
   display: block;
 }
-.dialog[data-hidden='true'] {
+.modal[data-hidden='true'] {
   display: none;
 }
-.dialog.active {
+.modal.active {
   opacity: 1;
 }
-.dialog-label {
+.modal-label {
   font-size: 2.3rem;
   font-weight: 200;
   margin: 0.5rem 0;
   max-width: 90%;
 }
-.dialog-body {
+.modal-body {
   padding: 1rem 0;
   font-size: 1.1rem;
   margin-bottom: 1rem;
 }
 .btn {
   background: none;
-  border: 5px solid transparent;
+  border: none;
+  outline: 3px solid transparent;
   font-size: 1.5rem;
   padding: 0.5rem 0.8rem;
 }
 button:focus {
-  border: 5px solid hsl(187, 35%, 49%);
+  outline: 3px solid hsl(308, 96%, 51%);
 }
-.btn-dialog {
-  outline: 1px solid hsla(0, 0%, 0%, 0.122);
+.btn-modal {
+  border: none;
   color: #fff;
   background-color: hsla(0, 0%, 0%, 0.753);
 }
-.dialog-close.x {
+.modal-close.x {
   font-size: 3rem;
   font-weight: 300;
   border: none;
@@ -89,15 +91,15 @@ button:focus {
   right: 0;
   color: hsla(14deg, 2%, 2%, 0.8);
 }
-.dialog-close {
+.modal-close {
   background-color: hsla(14deg, 2%, 2%, 1);
   margin-right: 0.3rem;
   color: #fff;
 }
-.dialog-agree {
+.modal-agree {
   background-color: hsla(120deg, 63%, 46%, 1);
   color: #fff;
 }
-.dialog--btn-group {
+.modal--btn-group {
   text-align: right;
 }
