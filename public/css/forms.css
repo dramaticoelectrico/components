@@ -1,0 +1,73 @@
+body,
+html {
+  font-family: Arial, Helvetica, sans-serif;
+  box-sizing: border-box;
+}
+label.active {
+  background-color: hsl(90, 85%, 79%);
+}
+fieldset.form-upload {
+  cursor: pointer;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  border: none;
+  min-height: 250px;
+}
+fieldset.form-upload svg {
+  pointer-events: none;
+}
+fieldset.form-upload label {
+  display: block;
+  border: 10px solid;
+  text-align: center;
+  text-transform: uppercase;
+  padding-top: 0.5rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  position: absolute;
+  width: inherit;
+  height: inherit;
+  z-index: 1;
+  cursor: pointer;
+}
+span.svg-upload {
+  display: block;
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+}
+.upload-filename {
+  position: absolute;
+  top: 85%;
+  left: 14px;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  width: 12rem;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  z-index: 2;
+}
+input[type='file']:focus + label,
+input[type='file'] + label:hover {
+  border: 10px solid #f15d22;
+}
+[type='file'] {
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute !important;
+  white-space: nowrap;
+  width: 1px;
+}
+@media only screen and (min-width: 77.5em) {
+  .upload-filename {
+    top: 38%;
+    left: 240px;
+    font-size: 3rem;
+    width: 90%;
+  }
+}
