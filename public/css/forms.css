@@ -6,13 +6,21 @@ html {
   font-family: Arial, Helvetica, sans-serif;
   box-sizing: border-box;
 }
-label.active {
-  background-color: hsl(90, 85%, 79%);
-}
+
 .error {
   display: block;
   visibility: hidden;
   color: red;
+}
+label {
+  display: block;
+  margin: 0.4em 0.1em;
+}
+legend {
+  font-weight: 500;
+  font-family: 'Courier New', Courier, monospace;
+  letter-spacing: 1px;
+  text-transform: uppercase;
 }
 input[type='text']:focus {
   border: 2px solid var(--input-active);
@@ -24,6 +32,21 @@ input[type='text'] {
   padding: 0.3rem;
   font-size: 1.25rem;
   border: 2px solid #666;
+}
+input[type='radio'],
+input[type='checkbox'] {
+  margin: 0.15em 0.3em 0 0;
+  padding: 0;
+  vertical-align: text-top;
+}
+fieldset {
+  border: 1px solid hsla(0, 0%, 0%, 0.521);
+  padding: 1em;
+  margin: 1em 0;
+}
+/* ==== FORM UPLOAD ======= */
+label.active {
+  background-color: hsl(90, 85%, 79%);
 }
 fieldset.form-upload {
   cursor: pointer;
@@ -50,11 +73,7 @@ fieldset.form-upload label {
   z-index: 1;
   cursor: pointer;
 }
-fieldset.section {
-  border: none;
-  margin: 0;
-  padding: 0;
-}
+
 span.svg-upload {
   display: block;
   width: 200px;

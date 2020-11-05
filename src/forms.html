@@ -17,35 +17,43 @@
         <span class="upload-filename"></span>
       </fieldset>
       <fieldset class="section">
-        <label for="name">Name</label>
-        <input class="" type="text" id="name" value="" />
-        <span aria-hidden="true" class="input error">this is an error</span>
+        <legend>Your Personal details</legend>
+        <label for="name">Name
+          <input type="text" id="name" />
+          <span aria-hidden="true" class="input error">this is an error</span>
+        </label>
+        <label for="age">Age
+          <input type="text" id="age" />
+          <span aria-hidden="true" class="input error">this is an error</span>
+        </label>
       </fieldset>
       <fieldset>
-        <legend>Select your pizza toppings:</legend>
-        <input id="ham" type="checkbox" name="toppings" value="ham">
-        <label for="ham">Ham</label>
-        <input id="pepperoni" type="checkbox" name="toppings" value="pepperoni">
-        <label for="pepperoni">Pepperoni</label>
-        <input id="mushrooms" type="checkbox" name="toppings" value="mushrooms">
-        <label for="mushrooms">Mushrooms</label>
-        <input id="olives" type="checkbox" name="toppings" value="olives">
-        <label for="olives">Olives</label>
+        <legend>Select your pizza toppings</legend>
+        <label for="ham">
+          <input id="ham" type="checkbox" name="toppings" value="ham">
+        Ham</label>
+        <label for="pepperoni">
+          <input id="pepperoni" type="checkbox" name="toppings" value="pepperoni">
+        Pepperoni</label>
+        <label for="mushrooms">
+          <input id="mushrooms" type="checkbox" name="toppings" value="mushrooms">
+        Mushrooms</label>
+        <label for="olives">
+          <input id="olives" type="checkbox" name="toppings" value="olives">
+        Olives</label>
         </fieldset>
         <fieldset>
           <legend>Choose a shipping method</legend>
-          <div class="radio-group">
+            <label for="overnight">
             <input id="overnight" type="radio" name="shipping" value="overnight">
-            <label for="overnight">Overnight</label>
-          </div>
-          <div class="radio-group">
+            Overnight</label>
+            <label for="twoday">
             <input id="twoday" type="radio" name="shipping" value="twoday">
-            <label for="twoday">Two day</label>
-          </div>
-          <div class="radio-group">
+            Two day</label>
+            <label for="ground">
             <input id="ground" type="radio" name="shipping" value="ground">
-            <label for="ground">Ground</label>
-          </div>
+            Ground</label>
+        
         </fieldset>
         <div class="selectbox">
           <label for="favcity">Which is your favorite bird?</label>
