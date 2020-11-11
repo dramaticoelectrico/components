@@ -6,7 +6,28 @@ html {
   font-family: Arial, Helvetica, sans-serif;
   box-sizing: border-box;
 }
-
+/* <<=========== BUTTON =============== */
+.btn {
+  background-color: hsl(0, 0%, 0%);
+  font-size: 1.5em;
+  border: 2px solid transparent;
+  border-radius: 3px;
+  color: hsl(0, 0%, 100%);
+  padding: 0.3rem 0.5rem;
+  cursor: pointer;
+  box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.22);
+  -webkit-box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.22);
+  -moz-box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.22);
+}
+.btn:hover,
+.btn:active {
+  border: 2px solid var(--input-active);
+  background-color: hsl(192, 81%, 26%);
+}
+.btn-submit {
+  background-color: hsla(197.72, 42.35%, 31.96%, 1);
+}
+/* =========== BUTTON ===============>> */
 .error {
   display: block;
   visibility: hidden;
@@ -14,7 +35,10 @@ html {
 }
 label {
   display: block;
-  margin: 0.4em 0.1em;
+  margin: 0.6em 0.1em;
+}
+.selectbox > label {
+  margin: 0.3em 0.1em;
 }
 legend {
   font-weight: 500;
