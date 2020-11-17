@@ -47,6 +47,10 @@ legend {
   letter-spacing: 1px;
   text-transform: uppercase;
 }
+textarea,
+input[type='text'] {
+  font-family: 'Courier New', Courier, monospace;
+}
 input[type='text']:focus {
   border: 2px solid var(--input-active);
   outline: none;
@@ -63,6 +67,26 @@ input[type='checkbox'] {
   margin: 0.15em 0.3em 0 0;
   padding: 0;
   vertical-align: text-top;
+}
+label[for='description'] {
+  margin-bottom: 0.2rem;
+}
+label[for='description'] + textarea {
+  font-size: 1.3rem;
+  width: 75%;
+  min-height: 8rem;
+}
+.form_textarea {
+  margin: 1.5rem 0;
+}
+textarea {
+  outline: none;
+  border: 1px solid #666;
+  padding: 0.5rem;
+}
+textarea:active,
+textarea:focus {
+  border: 1px solid var(--input-active);
 }
 fieldset {
   border: 1px solid hsla(0, 0%, 0%, 0.521);
