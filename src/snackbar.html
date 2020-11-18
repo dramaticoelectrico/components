@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Snackbar</title>
+    <link rel="stylesheet" href="../public/css/snackbar.css" />
+</head>
+<body>
+    <nav>
+        <a href="/">Home</a>
+    </nav>
+    <main>
+        <button id="snackbar">Help at the snackbar?</button>
+
+    </main>
+    <div class="snackbar" aria-hidden="true" id="snackbar--dialog">
+       <span class="snackbar--type"></span>
+       Congratulations you have just won a new car!!!
+    </div>
+    <script src="../public/js/snackbar.js"></script>
+    <script>
+        const snackbar = SnackBar({el: "snackbar--dialog"});
+    </script>
+</body>
+</html>
