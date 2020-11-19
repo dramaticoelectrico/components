@@ -6,14 +6,14 @@
  * @param { el, status, auto } Object
  * @returns Object init
  */
-const SnackBar = function ({ el, status, auto }) {
-  const defaults = { el, status: 'success', auto: true }
-  const options = { ...defaults, el, status, auto }
+const SnackBar = function ({ el, status }) {
+  const defaults = { el, status: 'success' }
+  const options = { ...defaults, el, status }
   const snackbar = document.getElementById(options.el)
+  let timer = null
 
   function handlerCleanup(event) {
     if (event.animationName === 'animationSnackbarClose') {
-      console.log('transition end', event)
       snackbar.classList.remove('snackbar-active--close')
       snackbar.removeAttribute('style')
       snackbar.removeEventListener('animationend', handlerCleanup)
@@ -21,7 +21,13 @@ const SnackBar = function ({ el, status, auto }) {
   }
 
   const init = {}
-  init.show = function () {}
+  init.show = function (s) {
+    const delay = s || 5000
+    this.open()
+    timer = setTimeout(() => {
+      this.close()
+    }, delay)
+  }
   init.open = function () {
     snackbar.setAttribute('style', 'display: block')
     setTimeout(() => snackbar.classList.add('snackbar-active--open'), 100)
@@ -32,6 +38,7 @@ const SnackBar = function ({ el, status, auto }) {
     snackbar.classList.add('snackbar-active--close')
     snackbar.classList.remove('snackbar-active--open')
     snackbar.setAttribute('aria-hidden', true)
+    clearTimeout(timer)
   }
   return init
 }

@@ -11,7 +11,7 @@
         <a href="/">Home</a>
     </nav>
     <main>
-        <button id="snackbar">Help at the snackbar?</button>
+        <button onclick="snackbar.show()" id="snackbar">Help at the snackbar?</button>
 
     </main>
     <div class="snackbar" aria-hidden="true" id="snackbar--dialog">
@@ -20,7 +20,7 @@
     </div>
     <script src="../public/js/snackbar.js"></script>
     <script>
-        const snackbar = SnackBar({el: "snackbar--dialog", status: "success", auto: true});
+        const snackbar = SnackBar({el: "snackbar--dialog", status: "success"});
     </script>
 </body>
 </html>
