@@ -10,6 +10,9 @@ const SnackBar = function ({ el, status }) {
   const defaults = { el, status: 'success' }
   const options = { ...defaults, el, status }
   const snackbar = document.getElementById(options.el)
+
+  snackbar.dataset.prompt = status
+
   let timer = null
 
   function handlerCleanup(event) {
