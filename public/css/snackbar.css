@@ -18,10 +18,18 @@
   padding: 0.3rem;
 }
 .snackbar--type::after {
-  content: '\2713';
   width: 20px;
   height: 20px;
   font-size: 1.3rem;
+}
+.snackbar[data-prompt='success'] > .snackbar--type::after {
+  content: '\2713';
+}
+.snackbar[data-prompt='warning'] > .snackbar--type::after {
+  content: '\26A0';
+}
+.snackbar[data-prompt='error'] > .snackbar--type::after {
+  content: '\2715';
 }
 .snackbar[data-prompt='success'] {
   background: hsl(122, 39%, 49%);
